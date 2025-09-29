@@ -1,0 +1,20 @@
+(.venv) PS C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main> python main.py
+Traceback (most recent call last):
+  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\main.py", line 1, in <module>
+    from assistant import StudyAssistant
+  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\assistant.py", line 8, in <module>
+    from answer_refiner import refine_answer   # bullet-point answers
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\answer_refiner.py", line 10, in <module>
+    flan = pipeline(
+        "text2text-generation",
+    ...<2 lines>...
+        device=-1   # CPU (-1), or 0 if you have GPU
+    )
+  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\pipelines\__init__.py", line 1079, in pipeline
+    raise e
+  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\pipelines\__init__.py", line 1057, in pipeline
+    raise Exception(
+    ...<2 lines>...
+    )
+Exception: Impossible to guess which tokenizer to use. Please provide a PreTrainedTokenizer class or a path/identifier to a pretrained tokenizer.
