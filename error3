@@ -1,20 +1,88 @@
-(.venv) PS C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main> python main.py
-Traceback (most recent call last):
-  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\main.py", line 1, in <module>
+requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /google/flan-t5-base/resolve/main/config.json (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1035)')))"), '(Request ID: b681f436-8c30-46b4-a11d-1eecabd8b036)')
+Traceback:
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\streamlit\runtime\scriptrunner\exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\streamlit\runtime\scriptrunner\script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\app.py", line 2, in <module>
     from assistant import StudyAssistant
-  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\assistant.py", line 8, in <module>
-    from answer_refiner import refine_answer   # bullet-point answers
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\answer_refiner.py", line 10, in <module>
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\assistant.py", line 9, in <module>
+    from quiz_generator import generate_mcq, generate_short_question
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\quiz_generator.py", line 4, in <module>
     flan = pipeline(
         "text2text-generation",
-    ...<2 lines>...
+        model="google/flan-t5-base",
         device=-1   # CPU (-1), or 0 if you have GPU
     )
-  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\pipelines\__init__.py", line 1079, in pipeline
-    raise e
-  File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\pipelines\__init__.py", line 1057, in pipeline
-    raise Exception(
-    ...<2 lines>...
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\pipelines\__init__.py", line 883, in pipeline
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<5 lines>...
+        **hub_kwargs,
     )
-Exception: Impossible to guess which tokenizer to use. Please provide a PreTrainedTokenizer class or a path/identifier to a pretrained tokenizer.
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 321, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 566, in cached_files
+    raise e
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 478, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        local_files_only=local_files_only,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1010, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<14 lines>...
+        force_download=force_download,
+    )
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1073, in _hf_hub_download_to_cache_dir
+    (url_to_download, etag, commit_hash, expected_size, xet_file_data, head_call_error) = _get_metadata_or_catch_error(
+                                                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        repo_id=repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        relative_filename=relative_filename,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1546, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+        url=url, proxies=proxies, timeout=etag_timeout, headers=headers, token=token, endpoint=endpoint
+    )
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1463, in get_hf_file_metadata
+    r = _request_wrapper(
+        method="HEAD",
+    ...<5 lines>...
+        timeout=timeout,
+    )
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 286, in _request_wrapper
+    response = _request_wrapper(
+        method=method,
+    ...<2 lines>...
+        **params,
+    )
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 309, in _request_wrapper
+    response = http_backoff(method=method, url=url, **params)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\utils\_http.py", line 327, in http_backoff
+    raise err
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\utils\_http.py", line 308, in http_backoff
+    response = session.request(method=method, url=url, **kwargs)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\utils\_http.py", line 95, in send
+    return super().send(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\requests\adapters.py", line 675, in send
+    raise SSLError(e, request=request)
