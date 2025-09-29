@@ -1,0 +1,40 @@
+huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: 'C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\flan_mdoel'.
+Traceback:
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\streamlit\runtime\scriptrunner\exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\streamlit\runtime\scriptrunner\script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\app.py", line 2, in <module>
+    from assistant import StudyAssistant
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\assistant.py", line 8, in <module>
+    from answer_refiner import refine_answer   # bullet-point answers
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\answer_refiner.py", line 8, in <module>
+    flan = pipeline(
+        "text2text-generation",
+    ...<2 lines>...
+        device=-1   # CPU (-1), or 0 if you have GPU
+    )
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\pipelines\__init__.py", line 883, in pipeline
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<5 lines>...
+        **hub_kwargs,
+    )
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 321, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 531, in cached_files
+    _get_cache_file_to_return(path_or_repo_id, filename, cache_dir, revision, repo_type)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\transformers\utils\hub.py", line 144, in _get_cache_file_to_return
+    resolved_file = try_to_load_from_cache(
+        path_or_repo_id, full_filename, cache_dir=cache_dir, revision=revision, repo_type=repo_type
+    )
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+File "C:\Users\T8599\Desktop\studybot_2nd_review\studybot_2nd_review-main\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 160, in validate_repo_id
+    raise HFValidationError(
+    ...<3 lines>...
+    )
